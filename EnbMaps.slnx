@@ -1,6 +1,0 @@
-<Solution>
-  <Project Path="EnbMaps.Models/EnbMaps.Models.csproj" />
-  <Project Path="EnbMaps.Tests/EnbMaps.Tests.csproj" />
-  <Project Path="EnbMaps.Tools/EnbMaps.Tools.csproj" />
-  <Project Path="EnbMaps/EnbMaps.csproj" />
-</Solution>
