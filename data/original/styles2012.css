@@ -1,0 +1,1295 @@
+body {
+	background: #2F3C5F url("bilder/map_hintergrund.jpg") center no-repeat; 
+	background-attachment: fixed;
+	color: #FFFFFF;
+	margin: 0;
+	z-index: 0;
+	} 
+
+div#logo {
+	background: none;
+	width: 139px;
+	height: 75px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 2001;
+	}
+
+div#version {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	color: #333333;
+	font: 7pt "Verdana","Tahoma",sans-serif;
+	z-index: 2002;
+	}
+
+div#menuzeile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: url("bilder/menu_hintergrund.png") top left repeat;
+	width: auto;
+	height: 48px;
+	z-index: 2000;
+	}
+
+div#sectormenu {
+	position: absolute;
+	top: 0px;
+	left: 160px;
+	width: 102px;
+	height: 48px;
+	z-index: 2002;
+	}
+
+div#navs {
+	position: absolute;
+	top: 0px;
+	left: 269px;
+	background: url("bilder/menu_navs_icon.png") top left no-repeat;
+	width: 32px;
+	height: 48px;
+	font-size:1px;
+	z-index: 2002;
+	}
+
+div#name {
+	position: absolute;
+	top: 0px;
+	left: 301px;
+	width: 48px;
+	height: 32px;
+	z-index: 2000;
+	}
+
+div#koordinaten {
+	position: absolute;
+	top: 0px;
+	left: 349px;
+	width: 48px;
+	height: 32px;
+	z-index: 2000;
+	}
+
+div#stationlist {
+	position: absolute;
+	top: 0px;
+	left: 413px;
+	background: url("bilder/menu_stationlist_aus.png") top left no-repeat;
+	width: 102px;
+	height: 48px;
+	font-size:1px;
+	z-index: 2002;
+	}
+
+div#suche {
+	position: absolute;
+	top: 0px;
+	left: 531px;
+	background: url("bilder/menu_search.png") top left no-repeat;
+	width: 94px;
+	height: 48px;
+	font-size:1px;
+	z-index: 2000;
+	}
+
+div#suchfeld {
+	position: absolute;
+	top: 6px;
+	left: 98px;
+	width: 106px;
+	height: 32px;
+	z-index: 2000;
+	}
+/*
+div#erz {
+	position: absolute;
+	top: 0px;
+	left: 551px;
+	width: 106px;
+	height: 32px;
+	z-index: 2000;
+	}
+*/
+/*
+div#zoom {
+	position: absolute;
+	top: 0px;
+	left: 163px;
+	background: url("bilder/menu_leer.png") bottom left no-repeat;
+	width: 96px;
+	height: 32px;
+	z-index: 2000;
+	}
+
+div#plus {
+	position: absolute;
+	top: 0px;
+	left: 259px;
+	background: url("bilder/menu_nix.png") bottom left no-repeat;
+	width: 25px;
+	height: 32px;
+	z-index: 2000;
+	}
+
+div#minus {
+	position: absolute;
+	top: 0px;
+	left: 284px;
+	background: url("bilder/menu_nix.png") bottom left no-repeat;
+	width: 25px;
+	height: 32px;
+	z-index: 2000;
+	}
+*/
+/*
+div#druck {
+	position: absolute;
+	top: 0px;
+	left: 693px;
+	background: url("bilder/menu_leer.png") bottom left no-repeat;
+	width: 96px;
+	height: 32px;
+	z-index: 2000;
+	}
+*/
+/*
+div#mobs {
+	position: absolute;
+	top: 0px;
+	left: 355px;
+	width: 96px;
+	height: 32px;
+	z-index: 2000;
+	}
+
+div#mobsoff {
+	position: absolute;
+	top: 0px;
+	left: 355px;
+	background: url("bilder/menu_mobs_off.png") top left no-repeat;
+	width: 96px;
+	height: 32px;
+	z-index: 2000;
+	}
+*/
+
+/*
+div#text {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	color: #8BA1B5;
+	font: bold 12pt "Verdana","Tahoma",sans-serif;
+	text-decoration: none;
+	text-align: center;
+	line-height: 26px;
+	width: 64px;
+	padding: 6px 0px 0px 33px;
+	}
+*/
+/*
+div#text160 {
+	position: relative;
+	top: 10px;
+	left: 32px;
+	color: #FFFFFF;
+	font: bold 12pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	text-decoration: none;
+	width: 128px;
+	padding: 0px;
+	}
+*/
+/*
+div#groesse {
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	text-align: right;
+	padding: 0px;
+	z-index: 1;
+	}
+*/
+div#ueberschrift {
+	position: absolute;
+	top: 56px;
+	left: 160px;
+	color: #FFFFFF;
+	font: bold italic 16pt "Verdana","Tahoma",sans-serif;
+	text-shadow: 1px 1px #000000;
+	padding: 0px;
+	z-index: 1999;
+	}
+
+span#error {
+	font: 12pt "Verdana","Tahoma",sans-serif;
+	}
+
+/* Sektor Menu */
+.menu {
+	position: absolute;
+	top: 0px;
+	width: 93px;
+	padding: 0px;
+	z-index: 2002;
+	}
+
+.menu ul {
+	background: url("bilder/menu_sectormenu_aus.png") top left no-repeat;
+	width: 93px;
+	height: 48px;
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	z-index: 2002;
+	float: left;
+}
+
+.menu ul ul {
+	position: absolute;
+	background: url("bilder/menu_bg.png") top left repeat;
+	width: 200px;
+	height: auto;
+	}
+
+.menu ul ul ul {
+	position: absolute;
+	top: 2px;
+	left: 180px;
+	background: url("bilder/menu_bg.png") top left repeat;
+	width: 200px;
+	height: auto;
+	}
+
+.menu li {
+	position: relative;
+	padding: 0px;
+	}
+
+.menu li li , .menu li li li {
+	padding: 1px;
+	}
+
+.menu a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	text-decoration: none;
+	border: 0px;
+	padding: 2px;
+	}
+
+.menu a#top {
+	background: none;
+	font-size:1px;
+/*	font-size: 12pt;*/
+	font-weight: bold;
+	text-align: center;
+	line-height: 33px;
+	padding: 6px 0px 0px 32px;
+	cursor: default;
+	}
+
+.menu a#system {
+	font-size: 10pt;
+	font-weight: bold;
+	cursor: default;
+	}
+
+.menu a:hover {
+	background: #2F3C5F;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+.menu a#top:hover {
+	background: url("bilder/menu_sectormenu_an.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+.menu a#jenquai, .menu a#jenquai:hover {
+	color: #BF80FF;
+	}
+
+.menu a#progen, .menu a#progen:hover {
+	color: #FF8080;
+	}
+
+.menu a#terran, .menu a#terran:hover {
+	color: #8080FF;
+	}
+
+.menu ul ul, .menu ul li:hover ul ul, .menu ul ul li:hover ul ul {
+	display: none;
+	}
+
+.menu ul li:hover ul, .menu ul ul li:hover ul, .menu ul ul ul li:hover ul {
+	display: block;
+	}
+
+.menu span#info {
+	font: italic 8pt "Verdana","Tahoma",sans-serif;
+	}
+
+/* Navs Menu */
+.navsbutton {
+	position: absolute;
+	top: 0px;
+	width: 48px;
+	padding: 0px;
+	z-index: 2000;
+	}
+
+.navsbutton ul {
+	background: url("bilder/menu_navs_xyz_aus_aus.png") top left no-repeat;
+	width: 48px;
+	height: 48px;
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	z-index: 2000;
+	float: left;
+	}
+
+.navsbutton ul#name {
+	background: url("bilder/menu_navs_name_aus_aus.png") top left no-repeat;
+	}
+
+.navsbutton ul#namean {
+	background: url("bilder/menu_navs_name_aus_an.png") top left no-repeat;
+	}
+
+.navsbutton ul#namenotavail {
+	background: url("bilder/menu_navs_name_na.png") top left no-repeat;
+	}
+
+.navsbutton ul#xyz {
+	background: url("bilder/menu_navs_xyz_aus_aus.png") top left no-repeat;
+	}
+
+.navsbutton ul#xyzan {
+	background: url("bilder/menu_navs_xyz_aus_an.png") top left no-repeat;
+	}
+
+.navsbutton ul#xyznotavail {
+	background: url("bilder/menu_navs_xyz_na.png") top left no-repeat;
+	}
+
+.navsbutton li {
+	position: relative;
+	padding: 0px;
+	}
+
+.navsbutton a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	font-size:1px;
+/*	font: 10pt "Verdana","Tahoma",sans-serif;*/
+	text-decoration: none;
+	text-align: center;
+	line-height: 32px;
+	padding: 0px;
+	cursor: default;
+	border: 0px;
+	}
+
+.navsbutton a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+.navsbutton ul#name a:hover, .navsbutton ul#namean a:hover {
+	background: url("bilder/menu_navs_name_an.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+.navsbutton ul#xyz a:hover, .navsbutton ul#xyzan a:hover {
+	background: url("bilder/menu_navs_xyz_an.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+/* Stationlist Menu */
+.stationbutton {
+	position: absolute;
+	top: 0px;
+	width: 102px;
+	padding: 0px;
+	z-index: 2000;
+	}
+
+.stationbutton ul {
+	background: url("bilder/menu_stationlist_aus.png") top left no-repeat;
+	width: 102px;
+	height: 48px;
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	z-index: 2000;
+	float: left;
+	}
+
+.stationbutton a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	font-size:1px;
+	text-decoration: none;
+	text-align: center;
+	line-height: 32px;
+	padding: 0px;
+	cursor: default;
+	border: 0px;
+	}
+
+.stationbutton a:hover {
+	background: url("bilder/menu_stationlist_an.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+/* Mobs Menu */
+/*
+.mobserzbutton {
+	position: absolute;
+	top: 0px;
+	width: 96px;
+	padding: 0px;
+	z-index: 2000;
+	}
+
+.mobserzbutton ul {
+	width: 96px;
+	height: 32px;
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	z-index: 2000;
+	float: left;
+}
+
+.mobserzbutton ul#mobs {
+	background: url("bilder/menu_mobs_off.png") top left no-repeat;
+}
+
+.mobserzbutton ul#mobsan {
+	background: url("bilder/menu_mobs_on.png") top left no-repeat;
+}
+
+.mobserzbutton ul#erz {
+	background: url("bilder/menu_ores_off.png") top left no-repeat;
+}
+
+.mobserzbutton ul#erzan {
+	background: url("bilder/menu_ores_on.png") top left no-repeat;
+}
+
+.mobserzbutton li {
+	position: relative;
+	padding: 0px;
+	}
+
+.mobserzbutton a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	font: bold 12pt "Verdana","Tahoma",sans-serif;
+	text-decoration: none;
+	text-align: center;
+	line-height: 26px;
+	padding: 6px 0px 0px 33px;
+	cursor: default;
+	border: 0px;
+	}
+
+.mobserzbutton ul#mobs a:hover, .mobserzbutton ul#mobsan a:hover {
+	background: url("bilder/menu_mobs_on.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+.mobserzbutton ul#erz a:hover, .mobserzbutton ul#erzan a:hover {
+	background: url("bilder/menu_ores_on.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+*/
+
+/* Ores Menu */
+.erzbutton {
+	position: absolute;
+	top: 0px;
+	width: 106px;
+	padding: 0px;
+	z-index: 2000;
+	}
+
+.erzbutton ul {
+	background: url("bilder/menu_ores_aus_aus.png") top left no-repeat;
+	width: 106px;
+	height: 48px;
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	z-index: 2000;
+	float: left;
+}
+
+.erzbutton ul#an {
+	background: url("bilder/menu_ores_aus_an.png") top left no-repeat;
+}
+
+.erzbutton ul#notavail {
+	background: url("bilder/menu_ores_na.png") top left no-repeat;
+}
+
+.erzbutton li {
+	position: relative;
+	padding: 0px;
+	}
+
+.erzbutton a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	font-size:1px;
+/*	font: bold 12pt "Verdana","Tahoma",sans-serif;*/
+	text-decoration: none;
+	text-align: center;
+	line-height: 32px;
+	padding: 0px;
+	cursor: default;
+	border: 0px;
+	}
+
+.erzbutton a:hover {
+	background: url("bilder/menu_ores_an.png") top left no-repeat;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px;
+	}
+
+/* Suchfeld */
+.suchform input {
+/*	background: #2F3C5F;*/
+	background: #000000;
+	color: #FFFFFF;
+	font: 10pt "Verdana","Tahoma",sans-serif;
+	padding: 1px 2px;
+/*	border: 1px solid #8BA1B5;*/
+	border: 1px solid #2F3C5F;
+	border-radius: 5px;
+	}
+
+.suchform input#hidden {
+	background: none;
+	font-size: 0px;
+	padding: 0px;
+	border: none;
+	}
+
+/* Hauptbereich */
+.hauptfenster {
+	position: absolute;
+	top: 32px;
+	left: 0px;
+/*	background: url("bilder/menu_bg.png") top left repeat;*/
+	padding: 0px;
+	visibility: visible;
+	z-index: 1;
+/*	border: 1px solid #FFFFFF;*/
+	}
+
+.hauptfenster div {
+	position: absolute;
+	visibility: visible;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	text-shadow: 1px 1px #000000;
+	border: none;
+}
+
+.hauptfenster div#null {
+	font-size: 0px;
+	z-index: 10;
+}
+
+.hauptfenster div#grenze {
+	font-size: 0px;
+	z-index: 11;
+}
+
+.hauptfenster div#gravwell {
+	font-size: 0px;
+	z-index: 20;
+}
+
+.hauptfenster div#erz {
+	font-size: 0px;
+	z-index: 30;
+}
+
+.hauptfenster div#bild {
+	font-size: 0px;
+	z-index: 100;
+}
+
+.hauptfenster div#livebild {
+	font-size: 0px;
+	z-index: 101;
+}
+
+.hauptfenster div#livenav {
+	font-size: 0px;
+	z-index: 199;
+}
+
+.hauptfenster div#nav {
+	font-size: 0px;
+	z-index: 200;
+}
+
+.hauptfenster div#dunkelgrau {
+	color: #333333;
+	line-height: 14px;
+	z-index: 299;
+	}
+
+.hauptfenster div#blau, .hauptfenster div a#blau {
+/*	color: #6699FF;*/
+	color: #3366CC;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#gelb {
+/*	color: #FFFF66;*/
+	color: #CCCC00;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#grau {
+/*	color: #999999;*/
+	color: #666666;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#gruen, .hauptfenster div a#gruen {
+/*	color: #009933;*/
+	color: #006600;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#orange, .hauptfenster div a#orange {
+/*	color: #FFCC00;*/
+	color: #CC9900;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#rot, .hauptfenster div a#rot {
+/*	color: #FF0000;*/
+	color: #CC0000;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#schwarz, .hauptfenster div a#schwarz {
+	color: #000000;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div#weiss, .hauptfenster div a#weiss {
+	color: #CCCCCC;
+	line-height: 14px;
+	z-index: 300;
+	}
+
+.hauptfenster div a {
+/*	font: 8pt "Verdana","Tahoma",sans-serif;*/
+	text-decoration: none;
+	}
+
+.hauptfenster div a:hover {
+	text-decoration: none;
+	}
+
+.mouseoverbox {
+	position: absolute;
+/*	visibility: hide; */
+	visibility: hidden;
+	background: url("bilder/menu_bg.png") top left repeat;
+	color: #FFFFFF;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	padding: 4px;
+	border: 1px solid #8BA1B5;
+	z-index: 500;
+}
+
+.mouseoverbox td#header {
+	color: #FFFFFF;
+	font: bold 8pt "Verdana","Tahoma",sans-serif;
+	vertical-align: top;
+	padding: 0px 0px 0px 4px;
+}
+
+.mouseoverbox td#pos {
+	color: #8BA1B5;
+	font: 7pt "Verdana","Tahoma",sans-serif;
+	text-align: right;
+}
+
+.mouseoverbox span#blau {
+	color: #6699FF;
+	font-weight: normal;
+}
+
+.mouseoverbox span#gelb {
+	color: #FFFF66;
+	font-weight: normal;
+}
+
+.mouseoverbox span#grau {
+	color: #999999;
+	font-weight: normal;
+}
+
+.mouseoverbox span#gruen {
+	color: #009933;
+	font-weight: normal;
+}
+
+.mouseoverbox span#orange {
+	color: #FFCC00;
+	font-weight: normal;
+}
+
+.mouseoverbox span#rot {
+	color: #FF0000;
+	font-weight: normal;
+}
+
+.mouseoverbox hr, .station hr {
+	border: 0px;
+	border-top: solid 1px #8BA1B5;
+	border-bottom: transparent;
+}
+
+/* Stationen Info */
+.station {
+	position: absolute;
+	top: 10px;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	padding: 0px;
+	z-index: 1900;
+	}
+
+.station table {
+	width: 180px;
+	height: auto;
+	background: url("bilder/menu_bg.png") top left repeat;
+	padding: 2px;
+	border: 1px solid #8BA1B5;
+	}
+
+.station table#faction, table#terminal, .station table#vendors, .station table#npcs {
+	width: 100%;
+	height: auto;
+	background: none;
+	padding: 0px;
+	border: none;
+	}
+
+.station span#header {
+	font: bold 7pt "Verdana","Tahoma",sans-serif;
+	color: #8BA1B5;
+	}
+
+.station td {
+	color: #CCCCCC;
+	font: 7pt "Verdana","Tahoma",sans-serif;
+	}
+
+.station td#header13 {
+	color: #3366CC;
+	font: bold 8pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	}
+
+.station td#header50 {
+	color: #FFFF66;
+	font: bold 8pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	}
+
+.station td#header51 {
+	color: #FF0000;
+	font: bold 8pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	}
+
+.station table#terminal td {
+	height: 24px;
+	padding: 0px 0px 0px 26px;
+	}
+
+
+.station td#analyse {
+	background: url("bilder/station_term_analyse.png") top left no-repeat;
+	}
+
+.station td#avatar {
+	background: url("bilder/station_term_avatar.png") top left no-repeat;
+	}
+
+.station td#build {
+	background: url("bilder/station_term_build.png") top left no-repeat;
+	}
+
+.station td#jobs {
+	background: url("bilder/station_term_jobs.png") top left no-repeat;
+	}
+
+.station td#news {
+	background: url("bilder/station_term_news.png") top left no-repeat;
+	}
+
+.station td#refining {
+	background: url("bilder/station_term_refining.png") top left no-repeat;
+	}
+
+.station td#ship {
+	background: url("bilder/station_term_ship.png") top left no-repeat;
+	}
+
+.station td#bild {
+	width: 24px;
+	height: auto;
+	vertical-align: top;
+	padding: 0px;
+	}
+
+.station td#comps {
+	color: #CDA38A;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#device {
+	color: #75B1C5;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#equip {
+	color: #AEAEAE;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#gems {
+	color: #95AD75;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#package {
+	color: #A57DAD;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#trade {
+	color: #BFC16D;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#weapon {
+	color: #E78890;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#bar {
+	color: #C8A87A;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#casino {
+	color: #E0BDBA;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#dock {
+	color: #ACCBE0;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#lounge {
+	color: #D3D59A;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#market {
+	color: #AADA9F;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#construction {
+	color: #D3D5B9;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	}
+
+.station td#navnummer, .station td#navnummerhell {
+	color: #CCCCCC;
+	text-align: right;
+	vertical-align: middle;
+	padding: 1px;
+	}
+
+.station td#navicon, .station td#naviconhell {
+	text-align: center;
+	vertical-align: middle;
+	padding: 1px 2px;
+	}
+
+.station td#navtext, .station td#navtexthell {
+	color: #CCCCCC;
+	text-align: left;
+	vertical-align: middle;
+	padding: 1px;
+	}
+
+.station td#navnummerhell, .station td#naviconhell, .station td#navtexthell  {
+	background: #1A1A1A;
+	}
+
+/* Übersichts Seite */
+.uebersicht {
+	position: absolute;
+	visibility: visible;
+	padding: 0px;
+	}
+
+.uebersicht div#system {
+	z-index: 10;
+	}
+
+.uebersicht div#systemname {
+	height: auto;
+	color: #8BA1B5;
+	font: bold italic 10pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	text-shadow: 1px 1px #000000;
+	z-index: 21;
+	}
+
+.uebersicht div#sektor {
+	position: absolute;
+	z-index: 30;
+	}
+
+.uebersicht div#sektorname, .uebersicht div#sektorname a {
+	display: block;
+	color: #CCCCCC;
+	font: 8pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	text-shadow: 1px 1px #000000;
+	z-index: 31;
+	}
+
+.uebersicht div a:hover {
+	text-decoration: none;
+	}
+
+.uebersicht div#gateways {
+	z-index: 20;
+	}
+
+
+/* Suchergebnis Seite */
+.suchbegriff {
+	position: absolute;
+	top: 32px;
+	left: 0px;
+	padding: 0px;
+	visibility: visible;
+	z-index: 1;
+	}
+
+.suchfenster {
+	position: absolute;
+	top: 100px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	font: 12pt "Verdana","Tahoma",sans-serif;
+	color: #FFFFFF;
+	padding: 0px;
+	visibility: visible;
+	z-index: 1;
+	}
+
+.suchfenster table {
+	background: url("bilder/menu_bg.png") top left repeat;
+	height: auto;
+	padding: 2px;
+	border: 1px solid #8BA1B5;
+	}
+
+.suchfenster table#infobox {
+	background: none;
+	width: 100%;
+	height: auto;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster table#levelbox {
+	background: none;
+	width: 113px;
+	height: 13px;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster table#tradebox {
+	background: none;
+	width: 54px;
+	height: 24px;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster td {
+	background: none;
+	font: bold 12pt "Verdana","Tahoma",sans-serif;
+	padding: 2px;
+	border: none;
+/*	border: 1px solid #8BA1B5;*/
+	}
+
+.suchfenster td#grossesicon {
+	width: 48px;
+	height: auto;
+	text-align: left;
+	vertical-align: top;
+	padding: 10px;
+	}
+
+.suchfenster td#header {
+	color: #8BA1B5;
+	font: bold italic 16pt "Verdana","Tahoma",sans-serif;
+	text-align: left;
+	}
+
+.suchfenster td#nummer, .suchfenster td#nummerdunkel, .suchfenster td#nummerhell {
+	color: #8BA1B5;
+	font: bold 10pt "Verdana","Tahoma",sans-serif;
+	text-align: right;
+	vertical-align: middle;
+	padding: 0px 10px 0px 0px;
+	}
+
+.suchfenster td#kleinesicon {
+	width: 32px;
+	height: auto;
+	text-align: left;
+	vertical-align: middle;
+	padding: 10px;
+	}
+
+.suchfenster td#zeilehell, .suchfenster td#infoterminalhell, .suchfenster td#stationsnamehell, .suchfenster td#nummerhell, .suchfenster td#infozeilehell {
+	background: #1A1A1A;
+	}
+
+.suchfenster td#ort {
+	color: #8BA1B5;
+	font: italic 8pt "Verdana","Tahoma",sans-serif;
+	text-align: left;
+	}
+
+.suchfenster td#stationsnamedunkel, .suchfenster td#stationsnamehell {
+	width: auto;
+	height: auto;
+	line-height: 40px;
+	}
+
+.suchfenster td#infozeiledunkel, .suchfenster td#infozeilehell {
+	width: auto;
+	height: auto;
+	}
+
+.suchfenster td#infoboxhalb {
+	width: 50%;
+	height: auto;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster td#sektorbild {
+	width: 24px;
+	height: 24px;
+	font-size:1px;
+	text-align: left;
+	vertical-align: middle;
+	}
+
+.suchfenster td#sektorname {
+	width: auto;
+	height: auto;
+	color: #8BA1B5;
+	font: italic 10pt "Verdana","Tahoma",sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	}
+
+.suchfenster td#infoterminal, .suchfenster td#infoterminaldunkel, .suchfenster td#infoterminalhell, .suchfenster td#infovendor {
+	width: 40px;
+	height: 40px;
+	color: #8BA1B5;
+	font: italic 10pt "Verdana","Tahoma",sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+.suchfenster td#infovendorweapondunkel, .suchfenster td#infovendorweaponhell, .suchfenster td#infovendorequipdunkel, .suchfenster td#infovendorequiphell, .suchfenster td#infovendorcompsdunkel, .suchfenster td#infovendorcompshell {
+	width: 113px;
+	height: auto;
+	font-size:1px;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+.suchfenster td#infovendorweapondunkel {
+	background: #270F11; 
+	}
+
+.suchfenster td#infovendorweaponhell {
+	background: #4D1D21; 
+	}
+
+.suchfenster td#infovendorequipdunkel {
+	background: #181818; 
+	}
+
+.suchfenster td#infovendorequiphell {
+	background: #303030; 
+	}
+
+.suchfenster td#infovendorcompsdunkel {
+	background: #20160F; 
+	}
+
+.suchfenster td#infovendorcompshell {
+	background: #402B1E; 
+	}
+
+.suchfenster td#infovendortradedunkel, .suchfenster td#infovendortradehell, td#infovendorgemsdunkel, .suchfenster td#infovendorgemshell {
+	width: auto;
+	height: auto;
+	font-size:1px;
+	text-align: center;
+	vertical-align: middle;
+	}
+
+.suchfenster td#infovendortradedunkel {
+	background: #1D1D08; 
+	}
+
+.suchfenster td#infovendortradehell {
+	background: #393A10; 
+	}
+
+.suchfenster td#infovendorgemsdunkel {
+	background: #12180A; 
+	}
+
+.suchfenster td#infovendorgemshell {
+	background: #243014; 
+	}
+
+.suchfenster td#infovendordevicesdunkel {
+	background: #0A191E; 
+	}
+
+.suchfenster td#infovendordeviceshell {
+	background: #14323C; 
+	}
+
+.suchfenster td#infovendorpackagedunkel {
+	background: #160C18; 
+	}
+
+.suchfenster td#infovendorpackagehell {
+	background: #2C1830; 
+	}
+
+.suchfenster td#levelbox {
+	width: auto;
+	height: 13px;
+	font-size:1px;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster td#tradebox {
+	width: auto;
+	height: 24px;
+	font-size:1px;
+	padding: 0px;
+	border: none;
+	}
+
+.suchfenster a {
+	display: block;
+	background: none;
+	color: #FFFFFF;
+	text-decoration: none;
+	}
+
+.suchfenster a:hover {
+	display: block;
+	background: #2F3C5F;
+	color: #FFFFFF;
+	text-decoration: none;
+	}

@@ -1,0 +1,111 @@
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<div @ref="element" class="map-viewport @CssClass">
+    @ChildContent
+
+    <div class="map-ui map-zoom">
+        <button type="button" title="Zoom in" @onclick="() => ZoomByAsync(1.5)">+</button>
+        <button type="button" title="Zoom out" @onclick="() => ZoomByAsync(1 / 1.5)">&minus;</button>
+        <button type="button" title="Reset view" @onclick="ResetAsync">&#8634;</button>
+    </div>
+    @Controls
+</div>
+
+@code {
+    private ElementReference element;
+    private IJSObjectReference? module;
+    private IJSObjectReference? view;
+    private WorldRect? initializedRect;
+
+    /// <summary>Area that the default view should fit.</summary>
+    [Parameter, EditorRequired]
+    public WorldRect Rect { get; set; } = default!;
+
+    /// <summary>True for game coordinates (Y up), false for page pixel coordinates (Y down).</summary>
+    [Parameter]
+    public bool YUp { get; set; }
+
+    [Parameter]
+    public string? CssClass { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>Additional overlay controls rendered inside the viewport.</summary>
+    [Parameter]
+    public RenderFragment? Controls { get; set; }
+
+    /// <summary>Raised once the view transform is ready.</summary>
+    [Parameter]
+    public EventCallback OnReady { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (initializedRect == Rect)
+        {
+            return;
+        }
+
+        module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./js/mapview.js");
+        if (view is not null)
+        {
+            await view.InvokeVoidAsync("dispose");
+            await view.DisposeAsync();
+        }
+
+        initializedRect = Rect;
+        view = await module.InvokeAsync<IJSObjectReference>("create", element, new
+        {
+            yUp = YUp,
+            rect = new { minX = Rect.MinX, minY = Rect.MinY, maxX = Rect.MaxX, maxY = Rect.MaxY }
+        });
+
+        await OnReady.InvokeAsync();
+    }
+
+    public async Task ResetAsync()
+    {
+        if (view is not null)
+        {
+            await view.InvokeVoidAsync("fit");
+        }
+    }
+
+    public async Task ZoomByAsync(double factor)
+    {
+        if (view is not null)
+        {
+            await view.InvokeVoidAsync("zoomBy", factor);
+        }
+    }
+
+    /// <summary>Centres the view on a point, optionally zooming to a multiple of the default (fit) scale.</summary>
+    public async Task CenterOnAsync(double x, double y, double? zoom = null)
+    {
+        if (view is not null)
+        {
+            await view.InvokeVoidAsync("centerOn", x, y, zoom);
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (view is not null)
+            {
+                await view.InvokeVoidAsync("dispose");
+                await view.DisposeAsync();
+            }
+
+            if (module is not null)
+            {
+                await module.DisposeAsync();
+            }
+        }
+        catch (JSDisconnectedException)
+        {
+        }
+    }
+}

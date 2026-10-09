@@ -1,0 +1,25 @@
+@* Content of the original mouse-over box: an(icon, style, type, name, info, x, y, z) *@
+<table class="navinfo-header">
+    <tr>
+        <td><img src="bilder/icon@(MapObject.TooltipIcon).gif" width="36" height="36" alt=""
+                 onerror="this.onerror=null;this.src='bilder/@MapObject.Icon'" /></td>
+        <td class="header"><span class="@MapObject.Style">@MapObject.Type</span><br />@MapObject.Name</td>
+    </tr>
+</table>
+@if (MapObject.Info is not null)
+{
+    @((MarkupString)MapObject.Info)
+}
+<hr />
+<table class="navinfo-pos">
+    <tr><td>X:&nbsp;</td><td>@Format(MapObject.X)</td></tr>
+    <tr><td>Y:&nbsp;</td><td>@Format(MapObject.Y)</td></tr>
+    <tr><td>Z:&nbsp;</td><td>@Format(MapObject.Z)</td></tr>
+</table>
+
+@code {
+    [Parameter, EditorRequired]
+    public MapObject MapObject { get; set; } = default!;
+
+    private static string Format(double value) => value.ToString("0.00", CultureInfo.InvariantCulture);
+}

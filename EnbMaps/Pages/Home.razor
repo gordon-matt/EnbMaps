@@ -1,0 +1,64 @@
+﻿@page "/"
+@page "/index.php"
+@inject MapDataService Data
+@inject NavigationManager Navigation
+
+<PageTitle>[enbmaps.de] Earth &amp; Beyond Maps</PageTitle>
+
+@if (overview is not null)
+{
+    <MapViewport Rect="rect" CssClass="uebersicht">
+        <div class="ov-stage" style="width:@(overview.Width)px; height:@(overview.Height)px;">
+            @foreach (var system in overview.Systems)
+            {
+                var image = system.Image;
+                <img class="ov-system" src="bilder/@image.Src" style="@Place(image)" alt="" draggable="false" />
+                <div class="ov-systemname" style="left:@(image.Left)px; top:@(image.Top)px; width:@(image.Width)px;">@system.Name</div>
+            }
+
+            <img class="ov-gateways" src="bilder/@overview.GatewayImage" width="@overview.Width" height="@overview.Height" alt="" draggable="false" />
+
+            @foreach (var sector in overview.Sectors)
+            {
+                foreach (var image in sector.Images)
+                {
+                    <a class="ov-sektor" href="map/@sector.SectorId" style="@Place(image)" draggable="false">
+                        <img src="bilder/@image.Src" width="@image.Width" height="@image.Height" alt="" draggable="false" />
+                    </a>
+                }
+                <a class="ov-sektorname" href="map/@sector.SectorId" style="left:@(sector.LabelLeft)px; top:@(sector.LabelTop)px;" draggable="false">@sector.Label</a>
+            }
+        </div>
+    </MapViewport>
+}
+
+@code {
+    private Overview? overview;
+    private WorldRect rect = new(0, 0, 1, 1);
+
+    [SupplyParameterFromQuery(Name = "map")]
+    public string? LegacyMap { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Support links to the original site's URL scheme, e.g. index.php?map=Earth or index.php?stationlist
+        var query = new Uri(Navigation.Uri).Query;
+        if (!string.IsNullOrEmpty(LegacyMap))
+        {
+            Navigation.NavigateTo($"map/{Uri.EscapeDataString(LegacyMap)}", replace: true);
+            return;
+        }
+        if (query.Contains("stationlist", StringComparison.OrdinalIgnoreCase))
+        {
+            Navigation.NavigateTo("stations", replace: true);
+            return;
+        }
+
+        var dataset = await Data.LoadAsync();
+        overview = dataset.Overview;
+        rect = new WorldRect(0, 0, overview.Width, overview.Height);
+    }
+
+    private static string Place(PlacedImage image) =>
+        $"left:{image.Left}px; top:{image.Top}px; width:{image.Width}px; height:{image.Height}px;";
+}

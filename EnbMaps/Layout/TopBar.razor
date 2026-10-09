@@ -1,0 +1,111 @@
+@implements IDisposable
+@inject MapDataService Data
+@inject MapSettings Settings
+@inject NavigationManager Navigation
+
+<div id="menuzeile">
+    <div id="version">@Data.Dataset?.SiteVersion</div>
+    <div id="logo"><a href="./" title="Overview"><img src="bilder/logo2012d.png" width="139" height="75" alt="enbmaps.de" /></a></div>
+
+    <div id="sectormenu" @onmouseleave="CloseMenu">
+        <div class="menu">
+            <ul>
+                <li class="@(menuOpen ? "open" : null)">
+                    <button type="button" class="menu-top" title="Sectors" @onclick="ToggleMenu"></button>
+                    <ul>
+                        @if (Data.Dataset is not null)
+                        {
+                            foreach (var system in Data.Dataset.Systems)
+                            {
+                                <li class="@(openSystem == system.Name ? "open" : null)">
+                                    <button type="button" class="menu-system" @onclick="() => ToggleSystem(system.Name)">@system.Name</button>
+                                    <ul>
+                                        @foreach (var sector in system.SectorIds.Select(Data.FindSector).OfType<Sector>())
+                                        {
+                                            <li>
+                                                <a href="map/@sector.Id" class="@sector.MenuStyle" @onclick="CloseMenu">
+                                                    @sector.Name
+                                                    @if (sector.MenuInfo is not null)
+                                                    {
+                                                        <span class="menu-info">(@sector.MenuInfo)</span>
+                                                    }
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="navs"></div>
+
+    <div id="name">
+        <button type="button" class="navsbutton name @(IsSectorPage ? (Settings.ShowNames ? "on" : "off") : "na")"
+                title="Show names" disabled="@(!IsSectorPage)" @onclick="Settings.ToggleNames"></button>
+    </div>
+
+    <div id="koordinaten">
+        <button type="button" class="navsbutton xyz @(IsSectorPage ? (Settings.ShowCoordinates ? "on" : "off") : "na")"
+                title="Show coordinates" disabled="@(!IsSectorPage)" @onclick="Settings.ToggleCoordinates"></button>
+    </div>
+
+    <div id="stationlist"><a href="stations" class="stationbutton" title="Station List"></a></div>
+
+    <div id="suche">
+        <form class="suchform" @onsubmit="SubmitSearch">
+            <input type="search" @bind="searchText" maxlength="80" aria-label="Search" placeholder="Search..." />
+        </form>
+    </div>
+</div>
+
+@code {
+    private bool menuOpen;
+    private string? openSystem;
+    private string? searchText;
+
+    private bool IsSectorPage => Navigation.ToBaseRelativePath(Navigation.Uri).StartsWith("map/", StringComparison.OrdinalIgnoreCase);
+
+    protected override async Task OnInitializedAsync()
+    {
+        Settings.Changed += OnChanged;
+        Navigation.LocationChanged += OnLocationChanged;
+        await Data.LoadAsync();
+    }
+
+    private void ToggleMenu() => menuOpen = !menuOpen;
+
+    private void ToggleSystem(string system) => openSystem = openSystem == system ? null : system;
+
+    private void CloseMenu()
+    {
+        menuOpen = false;
+        openSystem = null;
+    }
+
+    private void SubmitSearch()
+    {
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            Navigation.NavigateTo($"search?q={Uri.EscapeDataString(searchText.Trim())}");
+        }
+    }
+
+    private void OnChanged() => InvokeAsync(StateHasChanged);
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        CloseMenu();
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Settings.Changed -= OnChanged;
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}
