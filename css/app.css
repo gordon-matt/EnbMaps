@@ -1,0 +1,913 @@
+/* Based on the original enbmaps.de styles2012.css (Stefan Schleusener aka Dodger), adapted for pan/zoom. */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #2F3C5F url("../bilder/map_hintergrund.jpg") center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #FFFFFF;
+    margin: 0;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    overflow: hidden;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+/* ---------- Top bar ---------- */
+
+#menuzeile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: url("../bilder/menu_hintergrund.png") top left repeat-x;
+    z-index: 2000;
+}
+
+#version {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    color: #333333;
+    font: 7pt "Verdana", "Tahoma", sans-serif;
+    z-index: 2002;
+}
+
+#logo {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 139px;
+    height: 75px;
+    z-index: 2001;
+}
+
+#sectormenu {
+    position: absolute;
+    top: 0;
+    left: 160px;
+    width: 102px;
+    height: 48px;
+    z-index: 2003;
+}
+
+#navs {
+    position: absolute;
+    top: 0;
+    left: 269px;
+    width: 32px;
+    height: 48px;
+    background: url("../bilder/menu_navs_icon.png") top left no-repeat;
+}
+
+#name, #koordinaten {
+    position: absolute;
+    top: 0;
+    width: 48px;
+    height: 48px;
+}
+
+#name { left: 301px; }
+#koordinaten { left: 349px; }
+
+#stationlist {
+    position: absolute;
+    top: 0;
+    left: 413px;
+    width: 108px;
+    height: 48px;
+}
+
+#suche {
+    position: absolute;
+    top: 0;
+    left: 531px;
+    width: 220px;
+    height: 48px;
+    background: url("../bilder/menu_search.png") top left no-repeat;
+}
+
+.suchform input {
+    position: absolute;
+    top: 8px;
+    left: 98px;
+    width: 110px;
+    background: #000000;
+    color: #FFFFFF;
+    font: 10pt "Verdana", "Tahoma", sans-serif;
+    padding: 1px 4px;
+    border: 1px solid #2F3C5F;
+    border-radius: 5px;
+}
+
+.navsbutton {
+    display: block;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none top left no-repeat;
+}
+
+.navsbutton.name.off { background-image: url("../bilder/menu_navs_name_aus_aus.png"); }
+.navsbutton.name.on { background-image: url("../bilder/menu_navs_name_aus_an.png"); }
+.navsbutton.name.na { background-image: url("../bilder/menu_navs_name_na.png"); cursor: default; }
+.navsbutton.name:not(.na):hover { background-image: url("../bilder/menu_navs_name_an.png"); }
+.navsbutton.xyz.off { background-image: url("../bilder/menu_navs_xyz_aus_aus.png"); }
+.navsbutton.xyz.on { background-image: url("../bilder/menu_navs_xyz_aus_an.png"); }
+.navsbutton.xyz.na { background-image: url("../bilder/menu_navs_xyz_na.png"); cursor: default; }
+.navsbutton.xyz:not(.na):hover { background-image: url("../bilder/menu_navs_xyz_an.png"); }
+
+.stationbutton {
+    display: block;
+    width: 108px;
+    height: 48px;
+    background: url("../bilder/menu_stationlist_aus.png") top left no-repeat;
+}
+
+.stationbutton:hover {
+    background-image: url("../bilder/menu_stationlist_an.png");
+}
+
+/* Sector menu */
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu > ul > li {
+    position: relative;
+}
+
+.menu button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.menu .menu-top {
+    display: block;
+    width: 93px;
+    height: 48px;
+    background: url("../bilder/menu_sectormenu_aus.png") top left no-repeat;
+}
+
+.menu .menu-top:hover, .menu li.open > .menu-top {
+    background-image: url("../bilder/menu_sectormenu_an.png");
+}
+
+.menu ul ul {
+    display: none;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 200px;
+    background: url("../bilder/menu_bg.png") top left repeat;
+}
+
+.menu ul ul ul {
+    top: 2px;
+    left: 180px;
+}
+
+.menu ul ul li {
+    position: relative;
+    padding: 1px;
+}
+
+.menu ul li:hover > ul, .menu ul li.open > ul {
+    display: block;
+}
+
+.menu ul ul a, .menu .menu-system {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    padding: 2px;
+}
+
+.menu .menu-system {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.menu ul ul a:hover, .menu .menu-system:hover {
+    background: #2F3C5F;
+}
+
+.menu a.jenquai { color: #BF80FF; }
+.menu a.progen { color: #FF8080; }
+.menu a.terran { color: #8080FF; }
+
+.menu .menu-info {
+    font: italic 8pt "Verdana", "Tahoma", sans-serif;
+}
+
+#ueberschrift {
+    position: absolute;
+    top: 24px;
+    left: 160px;
+    color: #FFFFFF;
+    font: bold italic 16pt "Verdana", "Tahoma", sans-serif;
+    text-shadow: 1px 1px #000000;
+    z-index: 1999;
+    pointer-events: none;
+}
+
+/* ---------- Main area & map viewport ---------- */
+
+.hauptfenster {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.map-viewport {
+    --s: 1;
+    --tx: 0;
+    --ty: 0;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.map-viewport.dragging {
+    cursor: grabbing;
+}
+
+.map-viewport img {
+    -webkit-user-drag: none;
+}
+
+/* Elements placed in map units: --x/--y is the map position, --w/--h the size. Y points up. */
+.map-place {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(calc((var(--tx) + var(--x) * var(--s)) * 1px), calc((var(--ty) - var(--y) * var(--s)) * 1px));
+    will-change: transform;
+}
+
+.map-img, .map-bounds {
+    width: calc(var(--w) * var(--s) * 1px);
+    height: calc(var(--h) * var(--s) * 1px);
+    pointer-events: none;
+}
+
+.map-img.gravwell { z-index: 20; }
+.map-img.bild { z-index: 100; }
+
+.map-bounds {
+    box-sizing: border-box;
+    border: 1px solid #850609;
+    z-index: 11;
+}
+
+.map-axis-x, .map-axis-y {
+    position: absolute;
+    background: rgba(153, 153, 153, 0.3);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.map-axis-x {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    left: 0;
+    transform: translateX(calc(var(--tx) * 1px));
+}
+
+.map-axis-y {
+    left: 0;
+    right: 0;
+    height: 1px;
+    top: 0;
+    transform: translateY(calc(var(--ty) * 1px));
+}
+
+.map-nav {
+    width: 0;
+    height: 0;
+    z-index: 200;
+}
+
+.map-nav .nav-icon {
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    cursor: pointer;
+}
+
+.map-nav.selected {
+    z-index: 400;
+}
+
+.map-nav.selected::before {
+    content: "";
+    position: absolute;
+    left: -14px;
+    top: -14px;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #FFFF66;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.4; }
+}
+
+.nav-label {
+    position: absolute;
+    white-space: nowrap;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    line-height: 14px;
+    text-shadow: 1px 1px #000000;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.nav-label.right { transform: translateX(-100%); text-align: right; }
+.nav-label.center { transform: translateX(-50%); text-align: center; }
+
+.nav-label.dunkelgrau { color: #333333; }
+.nav-label.blau { color: #3366CC; }
+.nav-label.gelb { color: #CCCC00; }
+.nav-label.grau { color: #666666; }
+.nav-label.gruen { color: #006600; }
+.nav-label.orange { color: #CC9900; }
+.nav-label.rot { color: #CC0000; }
+.nav-label.schwarz { color: #000000; }
+.nav-label.weiss { color: #CCCCCC; }
+
+.nav-label:hover { filter: brightness(1.6); }
+
+/* ---------- Tooltip (mouse-over box) ---------- */
+
+.mouseoverbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    background: url("../bilder/menu_bg.png") top left repeat;
+    color: #FFFFFF;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    padding: 4px;
+    border: 1px solid #8BA1B5;
+    z-index: 500;
+    pointer-events: none;
+    max-width: 260px;
+}
+
+.mouseoverbox.visible {
+    visibility: visible;
+}
+
+.mouseoverbox table {
+    border-collapse: collapse;
+}
+
+.mouseoverbox .header {
+    font-weight: bold;
+    vertical-align: top;
+    padding: 0 0 0 4px;
+}
+
+.mouseoverbox .navinfo-pos td {
+    color: #8BA1B5;
+    font-size: 7pt;
+    text-align: right;
+    padding: 0;
+}
+
+.mouseoverbox span.blau { color: #6699FF; font-weight: normal; }
+.mouseoverbox span.gelb { color: #FFFF66; font-weight: normal; }
+.mouseoverbox span.grau { color: #999999; font-weight: normal; }
+.mouseoverbox span.gruen { color: #009933; font-weight: normal; }
+.mouseoverbox span.orange { color: #FFCC00; font-weight: normal; }
+.mouseoverbox span.rot { color: #FF0000; font-weight: normal; }
+
+.mouseoverbox hr, .station hr {
+    border: 0;
+    border-top: solid 1px #8BA1B5;
+    margin: 4px 0;
+}
+
+/* ---------- Map overlay controls ---------- */
+
+.map-ui {
+    position: absolute;
+    z-index: 1900;
+    cursor: default;
+}
+
+.map-ui button, .map-ui .selection-actions a {
+    background: url("../bilder/menu_bg.png") top left repeat;
+    border: 1px solid #8BA1B5;
+    color: #FFFFFF;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+.map-ui button:hover, .map-ui .selection-actions a:hover {
+    background: #2F3C5F;
+}
+
+.map-zoom {
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.map-zoom button {
+    width: 32px;
+    height: 32px;
+    font-size: 14pt;
+    padding: 0;
+}
+
+.map-layers {
+    left: 52px;
+    bottom: 10px;
+}
+
+.map-layers ul {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin: 0 0 2px;
+    padding: 4px 8px;
+    list-style: none;
+    white-space: nowrap;
+    background: url("../bilder/menu_bg.png") top left repeat;
+    border: 1px solid #8BA1B5;
+}
+
+.map-layers li {
+    padding: 2px 0;
+}
+
+.selection.mouseoverbox {
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: 10px;
+    left: 130px;
+    pointer-events: auto;
+    padding-right: 20px;
+}
+
+.selection .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    padding: 0 5px;
+}
+
+.selection-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+/* ---------- Station panels ---------- */
+
+.station-panels {
+    top: 10px;
+    right: 10px;
+    max-height: calc(100% - 20px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.station-toggle {
+    align-self: flex-end;
+}
+
+.station {
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    cursor: default;
+    user-select: text;
+}
+
+.station table {
+    width: 180px;
+    background: url("../bilder/menu_bg.png") top left repeat;
+    padding: 2px;
+    border: 1px solid #8BA1B5;
+}
+
+.station table#faction, .station table#terminal, .station table#vendors, .station table#npcs {
+    width: 100%;
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.station span#header {
+    font: bold 7pt "Verdana", "Tahoma", sans-serif;
+    color: #8BA1B5;
+}
+
+.station td {
+    color: #CCCCCC;
+    font: 7pt "Verdana", "Tahoma", sans-serif;
+}
+
+.station td#header13 { color: #3366CC; font: bold 8pt "Verdana", "Tahoma", sans-serif; text-align: center; }
+.station td#header50 { color: #FFFF66; font: bold 8pt "Verdana", "Tahoma", sans-serif; text-align: center; }
+.station td#header51 { color: #FF0000; font: bold 8pt "Verdana", "Tahoma", sans-serif; text-align: center; }
+
+.station table#terminal td {
+    height: 24px;
+    padding: 0 0 0 26px;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.station td#analyse { background-image: url("../bilder/station_term_analyse.png"); }
+.station td#avatar { background-image: url("../bilder/station_term_avatar.png"); }
+.station td#build { background-image: url("../bilder/station_term_build.png"); }
+.station td#jobs { background-image: url("../bilder/station_term_jobs.png"); }
+.station td#news { background-image: url("../bilder/station_term_news.png"); }
+.station td#refining { background-image: url("../bilder/station_term_refining.png"); }
+.station td#ship { background-image: url("../bilder/station_term_ship.png"); }
+
+.station td#bild {
+    width: 24px;
+    vertical-align: top;
+    padding: 0;
+}
+
+.station td#comps, .station td#device, .station td#equip, .station td#gems, .station td#package,
+.station td#trade, .station td#weapon, .station td#bar, .station td#casino, .station td#dock,
+.station td#lounge, .station td#market, .station td#construction {
+    text-align: left;
+    vertical-align: top;
+    padding: 0 0 0 2px;
+}
+
+.station td#comps { color: #CDA38A; }
+.station td#device { color: #75B1C5; }
+.station td#equip { color: #AEAEAE; }
+.station td#gems { color: #95AD75; }
+.station td#package { color: #A57DAD; }
+.station td#trade { color: #BFC16D; }
+.station td#weapon { color: #E78890; }
+.station td#bar { color: #C8A87A; }
+.station td#casino { color: #E0BDBA; }
+.station td#dock { color: #ACCBE0; }
+.station td#lounge { color: #D3D59A; }
+.station td#market { color: #AADA9F; }
+.station td#construction { color: #D3D5B9; }
+
+/* ---------- Overview ---------- */
+
+.ov-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    transform: translate(calc(var(--tx) * 1px), calc(var(--ty) * 1px)) scale(var(--s));
+}
+
+.ov-stage > * {
+    position: absolute;
+}
+
+.ov-system { z-index: 10; }
+.ov-gateways { left: 0; top: 0; z-index: 20; pointer-events: none; }
+.ov-sektor { z-index: 30; }
+
+.ov-sektor img {
+    display: block;
+}
+
+.ov-systemname {
+    color: #8BA1B5;
+    font: bold italic 10pt "Verdana", "Tahoma", sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px #000000;
+    z-index: 21;
+    pointer-events: none;
+}
+
+.ov-sektorname {
+    color: #CCCCCC;
+    font: 8pt "Verdana", "Tahoma", sans-serif;
+    text-shadow: 1px 1px #000000;
+    white-space: nowrap;
+    z-index: 31;
+}
+
+.ov-sektorname:hover {
+    color: #FFFFFF;
+}
+
+/* ---------- Search results & station list ---------- */
+
+.suchfenster {
+    position: absolute;
+    top: 68px;
+    left: 20px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    padding: 0 20px 20px 0;
+    font: 12pt "Verdana", "Tahoma", sans-serif;
+}
+
+.suchfenster > table {
+    background: url("../bilder/menu_bg.png") top left repeat;
+    padding: 2px;
+    border: 1px solid #8BA1B5;
+    margin-bottom: 1em;
+    min-width: min(100%, 900px);
+}
+
+.suchfenster td {
+    font: bold 12pt "Verdana", "Tahoma", sans-serif;
+    padding: 2px;
+}
+
+.suchfenster a {
+    display: block;
+}
+
+.suchfenster a:hover {
+    background: #2F3C5F;
+}
+
+.suchfenster .grossesicon {
+    width: 48px;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.suchfenster .header {
+    color: #8BA1B5;
+    font: bold italic 16pt "Verdana", "Tahoma", sans-serif;
+}
+
+.suchfenster .nummer {
+    color: #8BA1B5;
+    font: bold 10pt "Verdana", "Tahoma", sans-serif;
+    text-align: right;
+    vertical-align: middle;
+    padding: 0 10px 0 0;
+}
+
+.suchfenster .kleinesicon {
+    width: 32px;
+    vertical-align: middle;
+    padding: 6px 10px;
+}
+
+.suchfenster .result {
+    width: 100%;
+}
+
+.suchfenster .ort {
+    color: #8BA1B5;
+    font: italic 8pt "Verdana", "Tahoma", sans-serif;
+}
+
+.suchfenster .ort img {
+    vertical-align: middle;
+}
+
+/* Station list */
+.stationlist .hell {
+    background: #1A1A1A;
+}
+
+.stationlist .stationsname {
+    line-height: 40px;
+}
+
+.stationlist .infoterminal {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.stationlist .infovendor {
+    min-width: 54px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1px;
+}
+
+.stationlist .infovendor table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.stationlist .infovendor td {
+    padding: 0;
+    font-size: 1px;
+    white-space: nowrap;
+}
+
+.stationlist .vendor-weapon.dunkel { background: #270F11; }
+.stationlist .vendor-weapon.hell { background: #4D1D21; }
+.stationlist .vendor-equip.dunkel { background: #181818; }
+.stationlist .vendor-equip.hell { background: #303030; }
+.stationlist .vendor-comps.dunkel { background: #20160F; }
+.stationlist .vendor-comps.hell { background: #402B1E; }
+.stationlist .vendor-trade.dunkel { background: #1D1D08; }
+.stationlist .vendor-trade.hell { background: #393A10; }
+.stationlist .vendor-gems.dunkel { background: #12180A; }
+.stationlist .vendor-gems.hell { background: #243014; }
+
+.stationlist .infozeile-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+}
+
+.stationlist .infozeile-part {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 45%;
+}
+
+.stationlist .sektorname {
+    color: #8BA1B5;
+    font: italic 10pt "Verdana", "Tahoma", sans-serif;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 760px) {
+    #logo, #navs {
+        display: none;
+    }
+
+    #sectormenu { left: 0; }
+    #name { left: 96px; }
+    #koordinaten { left: 144px; }
+    #stationlist { left: 196px; }
+
+    #suche {
+        top: 48px;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 36px;
+        background: url("../bilder/menu_hintergrund.png") top left repeat-x;
+    }
+
+    .suchform input {
+        top: 4px;
+        left: 8px;
+        right: 8px;
+        width: auto;
+    }
+
+    .hauptfenster {
+        top: 84px;
+    }
+
+    #ueberschrift {
+        top: 8px;
+        left: 10px;
+        font-size: 12pt;
+    }
+
+    .suchfenster {
+        top: 40px;
+        left: 8px;
+        padding-right: 8px;
+    }
+
+    .menu ul ul {
+        width: 220px;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+
+    .menu ul ul ul {
+        position: static;
+        width: auto;
+        max-height: none;
+        padding-left: 12px;
+    }
+
+    .menu ul ul li:hover > ul {
+        display: none;
+    }
+
+    .menu ul ul li.open > ul {
+        display: block;
+    }
+
+    .station-panels.collapsed .station {
+        display: none;
+    }
+
+    .selection.mouseoverbox {
+        left: 52px;
+        right: 10px;
+        bottom: 50px;
+        max-width: none;
+    }
+}
+
+/* ---------- Blazor infrastructure ---------- */
+
+#blazor-error-ui {
+    background: lightyellow;
+    color: #000000;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 3000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+#blazor-error-ui a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.loading-progress {
+    position: absolute;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    inset: 20vh 0 auto 0;
+    margin: 0 auto;
+}
+
+.loading-progress circle {
+    fill: none;
+    stroke: #2F3C5F;
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.loading-progress circle:last-child {
+    stroke: #8BA1B5;
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font: bold 10pt "Verdana", "Tahoma", sans-serif;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+.loading-progress-text:after {
+    content: var(--blazor-load-percentage-text, "Loading");
+}
